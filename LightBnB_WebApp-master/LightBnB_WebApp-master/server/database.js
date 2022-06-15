@@ -130,8 +130,8 @@ exports.getAllReservations = getAllReservations;
     queryString += `WHERE city LIKE $${queryParams.length} `;
   }
   if (options.owner_id) {
-    queryParams.push(`%${options.owner_id}%`);
-    queryString += `WHERE owner_id LIKE $${queryParams.length} `;
+    queryParams.push(Number(options.owner_id));
+    queryString += `WHERE owner_id = $${queryParams.length} `;
   }
   if (options.minimum_price_per_night && options.maximum_price_per_night) {
     queryParams.push(Number(options.minimum_price_per_night), Number(options.maximum_price_per_night));
